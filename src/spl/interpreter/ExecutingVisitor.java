@@ -97,9 +97,11 @@ public class ExecutingVisitor extends  SPLBaseVisitor<Value> implements SPLVisit
     // returnStmt: KW_RETURN expression SEMICOLON ;
     @Override
     public Value visitReturnStmt(SPLParser.ReturnStmtContext ctx) {
-        Value val = visit(ctx.expression());
+        if(ctx.expression() != null) {
+            Value val = visit(ctx.expression());
+            returnValue = val;
+        }
         returnFlag = true;
-        returnValue = val;
         return Value.VOID;
     }
 

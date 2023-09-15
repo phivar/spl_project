@@ -87,7 +87,7 @@ ifStmt : KW_IF LPAREN expression RPAREN statement KW_ELSE statement     #ifElseS
 
 printStmt : KW_PRINT expression SEMICOLON ;
 
-returnStmt: KW_RETURN expression SEMICOLON ;
+returnStmt: KW_RETURN (expression)? SEMICOLON ;
 
 whileStmt : KW_WHILE LPAREN expression RPAREN statement ;
 

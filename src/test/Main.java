@@ -65,6 +65,7 @@ public class Main {
             {"var l = func(x: number){}; l(\"asd\");", TYPE_ERROR},
             {"var l: list = func(x: number){};", TYPE_ERROR},
             {"var l: any = func(){return func(x:number){};}; l()([]);", TYPE_ERROR},
+            {"var f = func(){return;}; var b = f();", TYPE_ERROR},
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Exception) data[1]));
     public static void testSimpleErrors(){
         System.out.printf("=== Testing simple_error_tests\n");
@@ -173,6 +174,7 @@ public class Main {
             {"var out = \"aa\"; var b = \"bb\"; out = string_concat(out,b); ", new Value("aabb")},
             {"var out = 0.0; var b = \"bb\"; out = string_length(b); ", new Value(2.0)},
             {"var out = 0.0; var b = [1,2,3]; list_append(b,4); print b; out = 2.0; ", new Value(2.0)},
+            {"var out = 0.0; var b = [1,2,\"asdf\",true]; list_append(b,4); print b; out = 2.0; ", new Value(2.0)},
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Value) data[1]));
 
     public static void testStdLib(){
