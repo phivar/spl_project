@@ -23,6 +23,7 @@ public class SymbolTable {
 
         // Checks if a value typ satisfies the type bound.
         public boolean satisfiedBy(Value.Type type){
+            if(type == Value.Type.VOID) return false;
             return type == switch(this){
                 case ANY -> type;
                 case FLOAT -> Value.Type.FLOAT;
