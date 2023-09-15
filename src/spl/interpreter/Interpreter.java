@@ -15,7 +15,6 @@ public class Interpreter {
         SPLStdLib.registerSymbols(globalScope);
     }
 
-
     // Parses and runs a piece of code in the global scope.
     // Running this function multiple times is currently not supported
     // as it breaks the findLine method if an error occurs in a previously passed string.
