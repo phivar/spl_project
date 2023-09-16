@@ -67,6 +67,7 @@ public class Main {
             {"var l: any = func(){return func(x:number){};}; l()([]);", TYPE_ERROR},
             {"var f = func(){return;}; var b = f();", TYPE_ERROR},
             {"var f = func(){}; var id = func(x){return x;}; id(f());", TYPE_ERROR},
+            {"var empty = func(){}; var x: any = empty();", TYPE_ERROR},
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Exception) data[1]));
     public static void testSimpleErrors(){
         System.out.printf("=== Testing simple_error_tests\n");

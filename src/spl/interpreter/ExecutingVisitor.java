@@ -269,7 +269,10 @@ public class ExecutingVisitor extends  SPLBaseVisitor<Value> implements SPLVisit
     public Value visitEqualityTerm(SPLParser.EqualityTermContext ctx) {
         Value left = visit(ctx.term(0));
         Value right = visit(ctx.term(1));
-        if(left.type != right.type) throw TypeException.unequalTypesFromContext(ctx, left.type, right.type);
+        if(left.type == Value.Type.VOID || right.type == Value.Type.VOID)
+            throw TypeException.createTypeMismatchFromContext(ctx, SymbolTable.TypeBound.ANY, Value.Type.VOID);
+        if(left.type != right.type)
+            throw TypeException.unequalTypesFromContext(ctx, left.type, right.type);
         return switch(ctx.op.getType()){
             case SPLLexer.EQ -> left.eq(right);
             default /*NEQ*/ -> left.neq(right);
