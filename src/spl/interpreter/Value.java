@@ -93,6 +93,15 @@ public class Value {
         return Value.fromBool(forceBool() || rhs.forceBool());
     }
     public Value eq(Value rhs){
+        if(type == Type.LIST){
+            ArrayList<Value> l = forceList(), r = rhs.forceList();
+            if(l.size() != r.size()) return Value.FALSE;
+            for(int i  = 0; i < l.size(); i++){
+                Value a = l.get(i), b = r.get(i);
+                if(a.type != b.type || a.eq(b) == Value.FALSE) return Value.FALSE;
+            }
+            return Value.TRUE;
+        }
         return Value.fromBool(value.equals(rhs.value));
     }
     public Value neq(Value rhs){

@@ -68,6 +68,7 @@ public class Main {
             {"var f = func(){return;}; var b = f();", TYPE_ERROR},
             {"var f = func(){}; var id = func(x){return x;}; id(f());", TYPE_ERROR},
             {"var empty = func(){}; var x: any = empty();", TYPE_ERROR},
+            {"var z = func(){}; z() == z();", TYPE_ERROR},
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Exception) data[1]));
     public static void testSimpleErrors(){
         System.out.printf("=== Testing simple_error_tests\n");
@@ -108,6 +109,11 @@ public class Main {
             {"var out = 3.0 - 3.0;", new Value(0.0)},
             {"var out = 3.0 * 3.0;", new Value(9.0)},
             {"var out = 3.0 / 3.0;", new Value(1.0)},
+            {"var out = [] == [];", Value.TRUE},
+            {"var out = [2.0] == [2.0];", Value.TRUE},
+            {"var out = [[]] == [[]];", Value.TRUE},
+            {"var out = [1.0] == [2.0];", Value.FALSE},
+            {"var out = [] != [];", Value.FALSE},
     }).collect(Collectors.toMap(data -> (String) data[0], data -> (Value) data[1]));
 
     public static void testSimpleExpressionValues(){
