@@ -1,0 +1,29 @@
+// selection sort
+var sort = func(x){
+                var i = 0;
+                var n = list_length(x);
+                while(i < n){
+                    var min = i;
+                    var j = i+1;
+                    while(j < n){
+                        if(list_get(x,j) < list_get(x,min)){
+                            min = j;
+                        }
+                        j = j + 1;
+                    }
+
+                    var temp = list_get(x,i);
+                    list_set(x,i,list_get(x,min));
+                    list_set(x,min,temp);
+
+                    i = i+1;
+                }
+            };
+
+
+var x = [2,5,7,4,1.0,3.0,5];
+print "before sorting:";
+print x;
+sort(x);
+print "after sorting:";
+print x;

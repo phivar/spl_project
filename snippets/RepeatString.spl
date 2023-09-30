@@ -1,0 +1,16 @@
+// repeat a string
+var repeat = func(str: string, n: number){
+	var ans = "";
+	while(n > 0){
+		ans = string_concat(ans,str);
+		n = n-1;
+	}
+	return ans;
+};
+
+print "repeat string:";
+var n = 1;
+while(n < 10){
+	print repeat("a",n);
+	n = n+1;
+}

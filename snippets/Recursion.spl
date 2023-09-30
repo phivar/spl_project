@@ -1,0 +1,24 @@
+var fib = func(n: number){
+	if(n==0) return 0;
+	if(n==1) return 1;
+	return fib(n-1)+fib(n-2);
+};
+print "fibonacci using recursion:";
+var i = 0;
+while(i < 10){
+	print fib(i);
+	i = i+1;
+}
+
+
+var fac = func(n: number){
+	if(n == 0) return 1;
+	return fac(n-1)*n;
+};
+
+print "factorial using recursion:";
+i = 0;
+while(i < 10){
+	print fac(i);
+	i = i+1;
+}
