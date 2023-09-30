@@ -11,7 +11,7 @@ if(string_length("hello") > 0) {} // works
 ```
 
 #### 2. Operator-Überladung: 
-Operatoren sind nicht weiter überladen, stattdessen kann das verhalten durch builtin-Funktionen erreicht werden:
+Operatoren sind nicht weiter überladen, stattdessen kann das Verhalten durch builtin-Funktionen erreicht werden:
 ```js
 "asdf" + "asdf"; // type error!
 "asdf" + true; // type error!
@@ -19,7 +19,7 @@ string_concat("asdf","asdf"); // okay
 string_concat("bool: ",to_string(false)); // okay
 ```
 #### 3. Neudefinition von Variablen: 
-Variablen dürfen pro in einem GÜltigkeitsbereich nur einmal definiert werden.
+Variablen dürfen in einem Gültigkeitsbereich/Scope nur einmal definiert werden.
 ```js
 var a;
 var a; // name error!
@@ -36,7 +36,7 @@ print a; // 0.0
 ```
 
 #### Uninitialisierte Variablen:
-variablen können uninitialisiert deklariert werden `var a;` allerdings dürfen sie vor Zuweisung nicht in Ausdrücken benutzt werden.
+Variablen können uninitialisiert deklariert werden `var a;` allerdings dürfen sie vor der ersten Zuweisung nicht in Ausdrücken benutzt werden.
 ```js
 var a;
 a = 10;
